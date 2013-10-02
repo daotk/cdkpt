@@ -1,0 +1,3 @@
+﻿Có 2 tài liệu chi tiết về áp dụng Six sigma cho công ty nhưng phải mua mới được đọc, các bạn search http://www.kilobooks.com hoặc search google với dòng này sẽ ra:
+ + Ứng dụng lean six sigma để cải tiến hệ thống sản xuất công ty clipsal việt nam
+ + Triển khai áp dụng phương pháp 6 Sigma ở Công ty TNHH Nhà nước một thành viên Cơ khí Hà Nội
