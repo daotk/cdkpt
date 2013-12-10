@@ -70,7 +70,7 @@
                                     echo "</td>";
                                     //cot thu 2
                                     echo "<td>";
-                                    echo ($product['ProductName']);
+                                    echo "<a href='detail.php?id=".$product['ProductID']."'>".$product['ProductName']."</a>";
                                     echo "</td>";
                                     //cot thu 3
                                     echo "<td>";
@@ -83,6 +83,7 @@
                                     echo "<tr>";
                                 }
                         ?>
+                        
          </table>
           </td>
             
