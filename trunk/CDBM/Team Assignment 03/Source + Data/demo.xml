@@ -1,0 +1,979 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 4.0.4.1
+- http://www.phpmyadmin.net
+-
+- Host: 127.0.0.1
+- Generation Time: Dec 11, 2013 at 09:26 AM
+- Server version: 5.5.32
+- PHP Version: 5.4.16
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="http://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="demo" collation="utf8_unicode_ci" charset="utf8">
+            <pma:table name="products">
+                CREATE TABLE `products` (
+                  `ProductID` int(11) NOT NULL AUTO_INCREMENT,
+                  `ProductName` varchar(40) DEFAULT NULL,
+                  `SupplierID` int(11) DEFAULT NULL,
+                  `UnitsInStock` smallint(6) DEFAULT '0',
+                  PRIMARY KEY (`ProductID`)
+                ) ENGINE=MyISAM AUTO_INCREMENT=78 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="suppliers">
+                CREATE TABLE `suppliers` (
+                  `SupplierID` int(11) NOT NULL AUTO_INCREMENT,
+                  `CompanyName` varchar(40) DEFAULT NULL,
+                  `ContactName` varchar(30) DEFAULT NULL,
+                  `ContactTitle` varchar(30) DEFAULT NULL,
+                  `Address` varchar(60) DEFAULT NULL,
+                  `City` varchar(15) DEFAULT NULL,
+                  `Region` varchar(15) DEFAULT NULL,
+                  `PostalCode` varchar(10) DEFAULT NULL,
+                  `Country` varchar(15) DEFAULT NULL,
+                  `Phone` varchar(24) DEFAULT NULL,
+                  `Fax` varchar(24) DEFAULT NULL,
+                  `HomePage` text,
+                  PRIMARY KEY (`SupplierID`)
+                ) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="users">
+                CREATE TABLE `users` (
+                  `username` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+                  `password` text COLLATE utf8_unicode_ci,
+                  `fullname` text COLLATE utf8_unicode_ci,
+                  PRIMARY KEY (`username`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+            </pma:table>
+            <pma:procedure name="GetProduct">
+                CREATE DEFINER=`root`@`localhost` PROCEDURE `GetProduct`(IN In_Product_Name VARCHAR(255))
+                BEGIN
+                 SELECT * FROM products
+                 WHERE ProductName like &quot;In_Product_Name&quot;;
+                   END
+            </pma:procedure>
+            <pma:procedure name="GetProductByName">
+                CREATE DEFINER=`root`@`localhost` PROCEDURE `GetProductByName`( IN In_Product_Name VARCHAR( 100 ) )
+                BEGIN 
+                
+                SELECT p.ProductID, p.ProductName, s.CompanyName, p.UnitsInStock FROM suppliers AS s, products AS p WHERE( p.ProductName LIKE CONCAT('%',In_Product_Name,'%') )AND  (p.SupplierID = s.SupplierID);
+                END
+            </pma:procedure>
+            <pma:procedure name="SearchProductByName">
+                CREATE DEFINER=`root`@`localhost` PROCEDURE `SearchProductByName`(
+                IN in_product_name VARCHAR(100))
+                BEGIN
+                SELECT *
+                FROM `products`
+                WHERE Productname like &quot;%in_product_name%&quot;;
+                END
+            </pma:procedure>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'demo'
+    -->
+    <database name="demo">
+        <!-- Table products -->
+        <table name="products">
+            <column name="ProductID">1</column>
+            <column name="ProductName">Chai</column>
+            <column name="SupplierID">1</column>
+            <column name="UnitsInStock">39</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">2</column>
+            <column name="ProductName">Chang</column>
+            <column name="SupplierID">1</column>
+            <column name="UnitsInStock">17</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">3</column>
+            <column name="ProductName">Aniseed Syrup</column>
+            <column name="SupplierID">1</column>
+            <column name="UnitsInStock">13</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">4</column>
+            <column name="ProductName">Chef Anton's Cajun Seasoning</column>
+            <column name="SupplierID">2</column>
+            <column name="UnitsInStock">53</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">5</column>
+            <column name="ProductName">Chef Anton's Gumbo Mix</column>
+            <column name="SupplierID">2</column>
+            <column name="UnitsInStock">0</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">6</column>
+            <column name="ProductName">Grandma's Boysenberry Spread</column>
+            <column name="SupplierID">3</column>
+            <column name="UnitsInStock">120</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">7</column>
+            <column name="ProductName">Uncle Bob's Organic Dried Pears</column>
+            <column name="SupplierID">3</column>
+            <column name="UnitsInStock">15</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">8</column>
+            <column name="ProductName">Northwoods Cranberry Sauce</column>
+            <column name="SupplierID">3</column>
+            <column name="UnitsInStock">6</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">9</column>
+            <column name="ProductName">Mishi Kobe Niku</column>
+            <column name="SupplierID">4</column>
+            <column name="UnitsInStock">29</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">10</column>
+            <column name="ProductName">Ikura</column>
+            <column name="SupplierID">4</column>
+            <column name="UnitsInStock">31</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">11</column>
+            <column name="ProductName">Queso Cabrales</column>
+            <column name="SupplierID">5</column>
+            <column name="UnitsInStock">22</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">12</column>
+            <column name="ProductName">Queso Manchego La Pastora</column>
+            <column name="SupplierID">5</column>
+            <column name="UnitsInStock">86</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">13</column>
+            <column name="ProductName">Konbu</column>
+            <column name="SupplierID">6</column>
+            <column name="UnitsInStock">24</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">14</column>
+            <column name="ProductName">Tofu</column>
+            <column name="SupplierID">6</column>
+            <column name="UnitsInStock">35</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">15</column>
+            <column name="ProductName">Genen Shouyu</column>
+            <column name="SupplierID">6</column>
+            <column name="UnitsInStock">39</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">16</column>
+            <column name="ProductName">Pavlova</column>
+            <column name="SupplierID">7</column>
+            <column name="UnitsInStock">29</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">17</column>
+            <column name="ProductName">Alice Mutton</column>
+            <column name="SupplierID">7</column>
+            <column name="UnitsInStock">0</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">18</column>
+            <column name="ProductName">Carnarvon Tigers</column>
+            <column name="SupplierID">7</column>
+            <column name="UnitsInStock">42</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">19</column>
+            <column name="ProductName">Teatime Chocolate Biscuits</column>
+            <column name="SupplierID">8</column>
+            <column name="UnitsInStock">25</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">20</column>
+            <column name="ProductName">Sir Rodney's Marmalade</column>
+            <column name="SupplierID">8</column>
+            <column name="UnitsInStock">40</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">21</column>
+            <column name="ProductName">Sir Rodney's Scones</column>
+            <column name="SupplierID">8</column>
+            <column name="UnitsInStock">3</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">22</column>
+            <column name="ProductName">Gustaf's Kn?ckebr?d</column>
+            <column name="SupplierID">9</column>
+            <column name="UnitsInStock">104</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">23</column>
+            <column name="ProductName">Tunnbr?d</column>
+            <column name="SupplierID">9</column>
+            <column name="UnitsInStock">61</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">24</column>
+            <column name="ProductName">Guaran? Fant?stica</column>
+            <column name="SupplierID">10</column>
+            <column name="UnitsInStock">20</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">25</column>
+            <column name="ProductName">NuNuCa Nu?-Nougat-Creme</column>
+            <column name="SupplierID">11</column>
+            <column name="UnitsInStock">76</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">26</column>
+            <column name="ProductName">Gumb?r Gummib?rchen</column>
+            <column name="SupplierID">11</column>
+            <column name="UnitsInStock">15</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">27</column>
+            <column name="ProductName">Schoggi Schokolade</column>
+            <column name="SupplierID">11</column>
+            <column name="UnitsInStock">49</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">28</column>
+            <column name="ProductName">R?ssle Sauerkraut</column>
+            <column name="SupplierID">12</column>
+            <column name="UnitsInStock">26</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">29</column>
+            <column name="ProductName">Th?ringer Rostbratwurst</column>
+            <column name="SupplierID">12</column>
+            <column name="UnitsInStock">0</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">30</column>
+            <column name="ProductName">Nord-Ost Matjeshering</column>
+            <column name="SupplierID">13</column>
+            <column name="UnitsInStock">10</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">31</column>
+            <column name="ProductName">Gorgonzola Telino</column>
+            <column name="SupplierID">14</column>
+            <column name="UnitsInStock">0</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">32</column>
+            <column name="ProductName">Mascarpone Fabioli</column>
+            <column name="SupplierID">14</column>
+            <column name="UnitsInStock">9</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">33</column>
+            <column name="ProductName">Geitost</column>
+            <column name="SupplierID">15</column>
+            <column name="UnitsInStock">112</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">34</column>
+            <column name="ProductName">Sasquatch Ale</column>
+            <column name="SupplierID">16</column>
+            <column name="UnitsInStock">111</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">35</column>
+            <column name="ProductName">Steeleye Stout</column>
+            <column name="SupplierID">16</column>
+            <column name="UnitsInStock">20</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">36</column>
+            <column name="ProductName">Inlagd Sill</column>
+            <column name="SupplierID">17</column>
+            <column name="UnitsInStock">112</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">37</column>
+            <column name="ProductName">Gravad lax</column>
+            <column name="SupplierID">17</column>
+            <column name="UnitsInStock">11</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">38</column>
+            <column name="ProductName">C?te de Blaye</column>
+            <column name="SupplierID">18</column>
+            <column name="UnitsInStock">17</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">39</column>
+            <column name="ProductName">Chartreuse verte</column>
+            <column name="SupplierID">18</column>
+            <column name="UnitsInStock">69</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">40</column>
+            <column name="ProductName">Boston Crab Meat</column>
+            <column name="SupplierID">19</column>
+            <column name="UnitsInStock">123</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">41</column>
+            <column name="ProductName">Jack's New England Clam Chowder</column>
+            <column name="SupplierID">19</column>
+            <column name="UnitsInStock">85</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">42</column>
+            <column name="ProductName">Singaporean Hokkien Fried Mee</column>
+            <column name="SupplierID">20</column>
+            <column name="UnitsInStock">26</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">43</column>
+            <column name="ProductName">Ipoh Coffee</column>
+            <column name="SupplierID">20</column>
+            <column name="UnitsInStock">17</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">44</column>
+            <column name="ProductName">Gula Malacca</column>
+            <column name="SupplierID">20</column>
+            <column name="UnitsInStock">27</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">45</column>
+            <column name="ProductName">R?gede sild</column>
+            <column name="SupplierID">21</column>
+            <column name="UnitsInStock">5</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">46</column>
+            <column name="ProductName">Spegesild</column>
+            <column name="SupplierID">21</column>
+            <column name="UnitsInStock">95</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">47</column>
+            <column name="ProductName">Zaanse koeken</column>
+            <column name="SupplierID">22</column>
+            <column name="UnitsInStock">36</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">48</column>
+            <column name="ProductName">Chocolade</column>
+            <column name="SupplierID">22</column>
+            <column name="UnitsInStock">15</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">49</column>
+            <column name="ProductName">Maxilaku</column>
+            <column name="SupplierID">23</column>
+            <column name="UnitsInStock">10</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">50</column>
+            <column name="ProductName">Valkoinen suklaa</column>
+            <column name="SupplierID">23</column>
+            <column name="UnitsInStock">65</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">51</column>
+            <column name="ProductName">Manjimup Dried Apples</column>
+            <column name="SupplierID">24</column>
+            <column name="UnitsInStock">20</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">52</column>
+            <column name="ProductName">Filo Mix</column>
+            <column name="SupplierID">24</column>
+            <column name="UnitsInStock">38</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">53</column>
+            <column name="ProductName">Perth Pasties</column>
+            <column name="SupplierID">24</column>
+            <column name="UnitsInStock">0</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">54</column>
+            <column name="ProductName">Tourti?re</column>
+            <column name="SupplierID">25</column>
+            <column name="UnitsInStock">21</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">55</column>
+            <column name="ProductName">P?t? chinois</column>
+            <column name="SupplierID">25</column>
+            <column name="UnitsInStock">115</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">56</column>
+            <column name="ProductName">Gnocchi di nonna Alice</column>
+            <column name="SupplierID">26</column>
+            <column name="UnitsInStock">21</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">57</column>
+            <column name="ProductName">Ravioli Angelo</column>
+            <column name="SupplierID">26</column>
+            <column name="UnitsInStock">36</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">58</column>
+            <column name="ProductName">Escargots de Bourgogne</column>
+            <column name="SupplierID">27</column>
+            <column name="UnitsInStock">62</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">59</column>
+            <column name="ProductName">Raclette Courdavault</column>
+            <column name="SupplierID">28</column>
+            <column name="UnitsInStock">79</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">60</column>
+            <column name="ProductName">Camembert Pierrot</column>
+            <column name="SupplierID">28</column>
+            <column name="UnitsInStock">19</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">61</column>
+            <column name="ProductName">Sirop d'?rable</column>
+            <column name="SupplierID">29</column>
+            <column name="UnitsInStock">113</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">62</column>
+            <column name="ProductName">Tarte au sucre</column>
+            <column name="SupplierID">29</column>
+            <column name="UnitsInStock">17</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">63</column>
+            <column name="ProductName">Vegie-spread</column>
+            <column name="SupplierID">7</column>
+            <column name="UnitsInStock">24</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">64</column>
+            <column name="ProductName">Wimmers gute Semmelkn?del</column>
+            <column name="SupplierID">12</column>
+            <column name="UnitsInStock">22</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">65</column>
+            <column name="ProductName">Louisiana Fiery Hot Pepper Sauce</column>
+            <column name="SupplierID">2</column>
+            <column name="UnitsInStock">76</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">66</column>
+            <column name="ProductName">Louisiana Hot Spiced Okra</column>
+            <column name="SupplierID">2</column>
+            <column name="UnitsInStock">4</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">67</column>
+            <column name="ProductName">Laughing Lumberjack Lager</column>
+            <column name="SupplierID">16</column>
+            <column name="UnitsInStock">52</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">68</column>
+            <column name="ProductName">Scottish Longbreads</column>
+            <column name="SupplierID">8</column>
+            <column name="UnitsInStock">6</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">69</column>
+            <column name="ProductName">Gudbrandsdalsost</column>
+            <column name="SupplierID">15</column>
+            <column name="UnitsInStock">26</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">70</column>
+            <column name="ProductName">Outback Lager</column>
+            <column name="SupplierID">7</column>
+            <column name="UnitsInStock">15</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">71</column>
+            <column name="ProductName">Fl?temysost</column>
+            <column name="SupplierID">15</column>
+            <column name="UnitsInStock">26</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">72</column>
+            <column name="ProductName">Mozzarella di Giovanni</column>
+            <column name="SupplierID">14</column>
+            <column name="UnitsInStock">14</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">73</column>
+            <column name="ProductName">R?d Kaviar</column>
+            <column name="SupplierID">17</column>
+            <column name="UnitsInStock">101</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">74</column>
+            <column name="ProductName">Longlife Tofu</column>
+            <column name="SupplierID">4</column>
+            <column name="UnitsInStock">4</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">75</column>
+            <column name="ProductName">Rh?nbr?u Klosterbier</column>
+            <column name="SupplierID">12</column>
+            <column name="UnitsInStock">125</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">76</column>
+            <column name="ProductName">Lakkalik??ri</column>
+            <column name="SupplierID">23</column>
+            <column name="UnitsInStock">57</column>
+        </table>
+        <table name="products">
+            <column name="ProductID">77</column>
+            <column name="ProductName">Original Frankfurter gr?ne So?e</column>
+            <column name="SupplierID">12</column>
+            <column name="UnitsInStock">32</column>
+        </table>
+        <!-- Table suppliers -->
+        <table name="suppliers">
+            <column name="SupplierID">1</column>
+            <column name="CompanyName">Exotic Liquids</column>
+            <column name="ContactName">Charlotte Cooper</column>
+            <column name="ContactTitle">Purchasing Manager</column>
+            <column name="Address">49 Gilbert St.</column>
+            <column name="City">London</column>
+            <column name="Region"></column>
+            <column name="PostalCode">EC1 4SD</column>
+            <column name="Country">United Kingdom</column>
+            <column name="Phone">(171) 555-2222</column>
+            <column name="Fax"></column>
+            <column name="HomePage"></column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">2</column>
+            <column name="CompanyName">New Orleans Cajun Delights</column>
+            <column name="ContactName">Shelley Burke</column>
+            <column name="ContactTitle">Order Administrator</column>
+            <column name="Address">P.O. Box 78934</column>
+            <column name="City">New Orleans</column>
+            <column name="Region">LA</column>
+            <column name="PostalCode">70117</column>
+            <column name="Country">United States</column>
+            <column name="Phone">(100) 555-4822</column>
+            <column name="Fax"></column>
+            <column name="HomePage">#CAJUN.HTM#</column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">3</column>
+            <column name="CompanyName">Grandma Kelly's Homestead</column>
+            <column name="ContactName">Regina Murphy</column>
+            <column name="ContactTitle">Sales Representative</column>
+            <column name="Address">707 Oxford Rd.</column>
+            <column name="City">Ann Arbor</column>
+            <column name="Region">MI</column>
+            <column name="PostalCode">48104</column>
+            <column name="Country">United States</column>
+            <column name="Phone">(313) 555-5735</column>
+            <column name="Fax">(313) 555-3349</column>
+            <column name="HomePage"></column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">4</column>
+            <column name="CompanyName">Tokyo Traders</column>
+            <column name="ContactName">Yoshi Nagase</column>
+            <column name="ContactTitle">Marketing Manager</column>
+            <column name="Address">9-8 Sekimai
+MUnited Statesshino-shi</column>
+            <column name="City">Tokyo</column>
+            <column name="Region"></column>
+            <column name="PostalCode">100</column>
+            <column name="Country">Japan</column>
+            <column name="Phone">(03) 3555-5011</column>
+            <column name="Fax"></column>
+            <column name="HomePage"></column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">5</column>
+            <column name="CompanyName">Cooperativa de Quesos 'Las Cabras'</column>
+            <column name="ContactName">Antonio del Valle Saavedra</column>
+            <column name="ContactTitle">Export Administrator</column>
+            <column name="Address">Calle del Rosal 4</column>
+            <column name="City">Oviedo</column>
+            <column name="Region">Asturias</column>
+            <column name="PostalCode">33007</column>
+            <column name="Country">Spain</column>
+            <column name="Phone">(98) 598 76 54</column>
+            <column name="Fax"></column>
+            <column name="HomePage"></column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">6</column>
+            <column name="CompanyName">Mayumi's</column>
+            <column name="ContactName">Mayumi Ohno</column>
+            <column name="ContactTitle">Marketing Representative</column>
+            <column name="Address">92 Setsuko
+Chuo-ku</column>
+            <column name="City">Osaka</column>
+            <column name="Region"></column>
+            <column name="PostalCode">545</column>
+            <column name="Country">Japan</column>
+            <column name="Phone">(06) 431-7877</column>
+            <column name="Fax"></column>
+            <column name="HomePage">Mayumi's (on the World Wide Web)#http://www.microsoft.com/accessdev/sampleapps/mayumi.htm#</column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">7</column>
+            <column name="CompanyName">Pavlova, Ltd.</column>
+            <column name="ContactName">Ian Devling</column>
+            <column name="ContactTitle">Marketing Manager</column>
+            <column name="Address">74 Rose St.
+Moonie Ponds</column>
+            <column name="City">Melbourne</column>
+            <column name="Region">Victoria</column>
+            <column name="PostalCode">3058</column>
+            <column name="Country">Australia</column>
+            <column name="Phone">(03) 444-2343</column>
+            <column name="Fax">(03) 444-6588</column>
+            <column name="HomePage"></column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">8</column>
+            <column name="CompanyName">Specialty Biscuits, Ltd.</column>
+            <column name="ContactName">Peter Wilson</column>
+            <column name="ContactTitle">Sales Representative</column>
+            <column name="Address">29 King's Way</column>
+            <column name="City">Manchester</column>
+            <column name="Region"></column>
+            <column name="PostalCode">M14 GSD</column>
+            <column name="Country">United Kingdom</column>
+            <column name="Phone">(161) 555-4448</column>
+            <column name="Fax"></column>
+            <column name="HomePage"></column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">9</column>
+            <column name="CompanyName">PB Kn?ckebr?d AB</column>
+            <column name="ContactName">Lars Peterson</column>
+            <column name="ContactTitle">Sales Agent</column>
+            <column name="Address">Kaloadagatan 13</column>
+            <column name="City">G?teborg</column>
+            <column name="Region"></column>
+            <column name="PostalCode">S-345 67</column>
+            <column name="Country">Sweden</column>
+            <column name="Phone">031-987 65 43</column>
+            <column name="Fax">031-987 65 91</column>
+            <column name="HomePage"></column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">10</column>
+            <column name="CompanyName">Refrescos Americanas LTDA</column>
+            <column name="ContactName">Carlos Diaz</column>
+            <column name="ContactTitle">Marketing Manager</column>
+            <column name="Address">Av. das Americanas 12.890</column>
+            <column name="City">S?o Paulo</column>
+            <column name="Region"></column>
+            <column name="PostalCode">5442</column>
+            <column name="Country">Brazil</column>
+            <column name="Phone">(11) 555 4640</column>
+            <column name="Fax"></column>
+            <column name="HomePage"></column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">11</column>
+            <column name="CompanyName">Heli S??waren GmbH &amp; Co. KG</column>
+            <column name="ContactName">Petra Winkler</column>
+            <column name="ContactTitle">Sales Manager</column>
+            <column name="Address">Tiergartenstra?e 5</column>
+            <column name="City">Berlin</column>
+            <column name="Region"></column>
+            <column name="PostalCode">10785</column>
+            <column name="Country">Germany</column>
+            <column name="Phone">(010) 9984510</column>
+            <column name="Fax"></column>
+            <column name="HomePage"></column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">12</column>
+            <column name="CompanyName">Plutzer Lebensmittelgro?m?rkte AG</column>
+            <column name="ContactName">Martin Bein</column>
+            <column name="ContactTitle">International Marketing Mgr.</column>
+            <column name="Address">Bogenallee 51</column>
+            <column name="City">Frankfurt</column>
+            <column name="Region"></column>
+            <column name="PostalCode">60439</column>
+            <column name="Country">Germany</column>
+            <column name="Phone">(069) 992755</column>
+            <column name="Fax"></column>
+            <column name="HomePage">Plutzer (on the World Wide Web)#http://www.microsoft.com/accessdev/sampleapps/plutzer.htm#</column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">13</column>
+            <column name="CompanyName">Nord-Ost-Fisch Handelsgesellschaft mbH</column>
+            <column name="ContactName">Sven Petersen</column>
+            <column name="ContactTitle">Coordinator Foreign Markets</column>
+            <column name="Address">Frahmredder 112a</column>
+            <column name="City">Cuxhaven</column>
+            <column name="Region"></column>
+            <column name="PostalCode">27478</column>
+            <column name="Country">Germany</column>
+            <column name="Phone">(04721) 8713</column>
+            <column name="Fax">(04721) 8714</column>
+            <column name="HomePage"></column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">14</column>
+            <column name="CompanyName">Formaggi Fortini s.r.l.</column>
+            <column name="ContactName">Elio Rossi</column>
+            <column name="ContactTitle">Sales Representative</column>
+            <column name="Address">Viale Dante, 75</column>
+            <column name="City">Ravenna</column>
+            <column name="Region"></column>
+            <column name="PostalCode">48100</column>
+            <column name="Country">Italy</column>
+            <column name="Phone">(0544) 60323</column>
+            <column name="Fax">(0544) 60603</column>
+            <column name="HomePage">#FORMAGGI.HTM#</column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">15</column>
+            <column name="CompanyName">Norske Meierier</column>
+            <column name="ContactName">Beate Vileid</column>
+            <column name="ContactTitle">Marketing Manager</column>
+            <column name="Address">Hatlevegen 5</column>
+            <column name="City">Sandvika</column>
+            <column name="Region"></column>
+            <column name="PostalCode">1320</column>
+            <column name="Country">Norway</column>
+            <column name="Phone">(0)2-953010</column>
+            <column name="Fax"></column>
+            <column name="HomePage"></column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">16</column>
+            <column name="CompanyName">Bigfoot Breweries</column>
+            <column name="ContactName">Cheryl Saylor</column>
+            <column name="ContactTitle">Regional Account Rep.</column>
+            <column name="Address">3400 - 8th Avenue
+Suite 210</column>
+            <column name="City">Bend</column>
+            <column name="Region">OR</column>
+            <column name="PostalCode">97101</column>
+            <column name="Country">United States</column>
+            <column name="Phone">(503) 555-9931</column>
+            <column name="Fax"></column>
+            <column name="HomePage"></column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">17</column>
+            <column name="CompanyName">Svensk Sj?f?da AB</column>
+            <column name="ContactName">Michael Bj?rn</column>
+            <column name="ContactTitle">Sales Representative</column>
+            <column name="Address">Brovallav?gen 231</column>
+            <column name="City">Stockholm</column>
+            <column name="Region"></column>
+            <column name="PostalCode">S-123 45</column>
+            <column name="Country">Sweden</column>
+            <column name="Phone">08-123 45 67</column>
+            <column name="Fax"></column>
+            <column name="HomePage"></column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">18</column>
+            <column name="CompanyName">Aux joyeux eccl?siastiques</column>
+            <column name="ContactName">Guyl?ne Nodier</column>
+            <column name="ContactTitle">Sales Manager</column>
+            <column name="Address">203, Rue des Francs-Bourgeois</column>
+            <column name="City">Paris</column>
+            <column name="Region"></column>
+            <column name="PostalCode">75004</column>
+            <column name="Country">France</column>
+            <column name="Phone">(1) 03.83.00.68</column>
+            <column name="Fax">(1) 03.83.00.62</column>
+            <column name="HomePage"></column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">19</column>
+            <column name="CompanyName">New England Seafood Cannery</column>
+            <column name="ContactName">Robb Merchant</column>
+            <column name="ContactTitle">Wholesale Account Agent</column>
+            <column name="Address">Order Processing Dept.
+2100 Paul Revere Blvd.</column>
+            <column name="City">Boston</column>
+            <column name="Region">MA</column>
+            <column name="PostalCode">02134</column>
+            <column name="Country">United States</column>
+            <column name="Phone">(617) 555-3267</column>
+            <column name="Fax">(617) 555-3389</column>
+            <column name="HomePage"></column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">20</column>
+            <column name="CompanyName">Leka Trading</column>
+            <column name="ContactName">Chandra Leka</column>
+            <column name="ContactTitle">Owner</column>
+            <column name="Address">471 Serangoon Loop, Suite #402</column>
+            <column name="City">Singapore</column>
+            <column name="Region"></column>
+            <column name="PostalCode">0512</column>
+            <column name="Country">Singapore</column>
+            <column name="Phone">555-8787</column>
+            <column name="Fax"></column>
+            <column name="HomePage"></column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">21</column>
+            <column name="CompanyName">Lyngbysild</column>
+            <column name="ContactName">Niels Petersen</column>
+            <column name="ContactTitle">Sales Manager</column>
+            <column name="Address">Lyngbysild
+Fiskebakken 10</column>
+            <column name="City">Lyngby</column>
+            <column name="Region"></column>
+            <column name="PostalCode">2800</column>
+            <column name="Country">Denmark</column>
+            <column name="Phone">43844108</column>
+            <column name="Fax">43844115</column>
+            <column name="HomePage"></column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">22</column>
+            <column name="CompanyName">Zaanse Snoepfabriek</column>
+            <column name="ContactName">Dirk Luchte</column>
+            <column name="ContactTitle">Accounting Manager</column>
+            <column name="Address">Verkoop
+Rijnweg 22</column>
+            <column name="City">Zaandam</column>
+            <column name="Region"></column>
+            <column name="PostalCode">9999 ZZ</column>
+            <column name="Country">Netherlands</column>
+            <column name="Phone">(12345) 1212</column>
+            <column name="Fax">(12345) 1210</column>
+            <column name="HomePage"></column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">23</column>
+            <column name="CompanyName">Karkki Oy</column>
+            <column name="ContactName">Anne Heikkonen</column>
+            <column name="ContactTitle">Product Manager</column>
+            <column name="Address">Valtakatu 12</column>
+            <column name="City">Lappeenranta</column>
+            <column name="Region"></column>
+            <column name="PostalCode">53120</column>
+            <column name="Country">Finland</column>
+            <column name="Phone">(953) 10956</column>
+            <column name="Fax"></column>
+            <column name="HomePage"></column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">24</column>
+            <column name="CompanyName">G'day, Mate</column>
+            <column name="ContactName">Wendy Mackenzie</column>
+            <column name="ContactTitle">Sales Representative</column>
+            <column name="Address">170 Prince Edward Parade
+Hunter's Hill</column>
+            <column name="City">Sydney</column>
+            <column name="Region">NSW</column>
+            <column name="PostalCode">2042</column>
+            <column name="Country">Australia</column>
+            <column name="Phone">(02) 555-5914</column>
+            <column name="Fax">(02) 555-4873</column>
+            <column name="HomePage">G'day Mate (on the World Wide Web)#http://www.microsoft.com/accessdev/sampleapps/gdaymate.htm#</column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">25</column>
+            <column name="CompanyName">Ma Maison</column>
+            <column name="ContactName">Jean-Guy Lauzon</column>
+            <column name="ContactTitle">Marketing Manager</column>
+            <column name="Address">2960 Rue St. Laurent</column>
+            <column name="City">Montr?al</column>
+            <column name="Region">Qu?bec</column>
+            <column name="PostalCode">H1J 1C3</column>
+            <column name="Country">Canada</column>
+            <column name="Phone">(514) 555-9022</column>
+            <column name="Fax"></column>
+            <column name="HomePage"></column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">26</column>
+            <column name="CompanyName">Pasta Buttini s.r.l.</column>
+            <column name="ContactName">Giovanni Giudici</column>
+            <column name="ContactTitle">Order Administrator</column>
+            <column name="Address">Via dei Gelsomini, 153</column>
+            <column name="City">Salerno</column>
+            <column name="Region"></column>
+            <column name="PostalCode">84100</column>
+            <column name="Country">Italy</column>
+            <column name="Phone">(089) 6547665</column>
+            <column name="Fax">(089) 6547667</column>
+            <column name="HomePage"></column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">27</column>
+            <column name="CompanyName">Escargots Nouveaux</column>
+            <column name="ContactName">Marie Delamare</column>
+            <column name="ContactTitle">Sales Manager</column>
+            <column name="Address">22, rue H. Voiron</column>
+            <column name="City">Montceau</column>
+            <column name="Region"></column>
+            <column name="PostalCode">71300</column>
+            <column name="Country">France</column>
+            <column name="Phone">85.57.00.07</column>
+            <column name="Fax"></column>
+            <column name="HomePage"></column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">28</column>
+            <column name="CompanyName">Gai p?turage</column>
+            <column name="ContactName">Eliane Noz</column>
+            <column name="ContactTitle">Sales Representative</column>
+            <column name="Address">Bat. B
+3, rue des Alpes</column>
+            <column name="City">Annecy</column>
+            <column name="Region"></column>
+            <column name="PostalCode">74000</column>
+            <column name="Country">France</column>
+            <column name="Phone">38.76.98.06</column>
+            <column name="Fax">38.76.98.58</column>
+            <column name="HomePage"></column>
+        </table>
+        <table name="suppliers">
+            <column name="SupplierID">29</column>
+            <column name="CompanyName">For?ts d'?rables</column>
+            <column name="ContactName">Chantal Goulet</column>
+            <column name="ContactTitle">Accounting Manager</column>
+            <column name="Address">148 rue Chasseur</column>
+            <column name="City">Ste-Hyacinthe</column>
+            <column name="Region">Qu?bec</column>
+            <column name="PostalCode">J2S 7S8</column>
+            <column name="Country">Canada</column>
+            <column name="Phone">(514) 555-2955</column>
+            <column name="Fax">(514) 555-2921</column>
+            <column name="HomePage"></column>
+        </table>
+        <!-- Table users -->
+        <table name="users">
+            <column name="username">admin</column>
+            <column name="password">123456</column>
+            <column name="fullname">Nguyễn Văn A</column>
+        </table>
+        <table name="users">
+            <column name="username">nguyenvanb</column>
+            <column name="password">nguyenvanb</column>
+            <column name="fullname">Nguyễn Văn B</column>
+        </table>
+        <table name="users">
+            <column name="username">support</column>
+            <column name="password">123456</column>
+            <column name="fullname">Khang Huynh</column>
+        </table>
+    </database>
+</pma_xml_export>
