@@ -1,0 +1,168 @@
+/*Home*/
+body{background-color: white;}
+.menu{
+    width: 550px;
+    height: 200px;
+    background-color:F48A97 ;
+    position: fixed;  
+    left: 50%;
+    margin-left: -350px;  
+    top: 50%;  
+    margin-top: -100px;
+    }
+.buttondn {
+    background-color: white;
+    width: 130px;
+    height: 100px;
+    margin-left:80px;
+    border: 3px solid #000;
+    border-color: 797979;
+    text-align:center; 
+    padding-top: 15px;
+    }
+.buttondk {
+    background-color: white;
+    width: 130px;
+    height: 100px;
+    margin-left:10px;
+    border: 3px solid #000;
+    border-color: 797979;
+    text-align:center; 
+    padding-top: 15px;
+    }
+
+.image{  
+    width: 50px;
+    height: 200px;
+    padding-left: 35px;
+    }
+.table1{
+    width: 550px;
+    height: 200px;
+    }
+span{color: F48A97;}
+
+/*Login*/
+
+.canhphai{
+    text-align: right;
+    }
+    
+.table2{  
+    padding-left: 50px;
+    }
+    
+input{
+    height: 30px;
+    width: 210px;
+    }
+    
+.theinputsubmit{
+    height: 30px;
+    width: 110px;
+    border: 3px solid #000;
+    border-color: 797979;
+    color: 83340A;
+    background-color: white; 
+    }
+    
+.thesubmit{
+    padding-top:20px;
+    padding-left: 110px;
+    }
+/*Register*/
+.register{
+    background-color:FFFFFF;
+    width: 550px;
+    height: 200px;
+    position: fixed;  
+    left: 50%;
+    margin-left: -350px;  
+    top: 50%;  
+    margin-top: -100px;
+    border: 3px solid #000;
+    border-color: 797979;
+}
+.imageregister{
+    background-color:F48A97 ;
+    padding: 15px;
+    }
+.inputregister{
+    height: 30px;
+    width: 200px;
+    }
+    
+/*Home*/
+
+.img-wrap {
+    background:F48A97;
+    width:300px;
+    height:150px;
+    position:relative;
+    display:block;
+}
+.img-wrap img{
+    max-width:500px;
+    max-height:400px;
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    margin:auto;
+}
+.hello-wrap {
+    background:F48A97;
+    width:300px;
+    height:30px;
+    position:relative;
+    display:block;
+}
+.thoat
+    {
+    text-decoration:none;
+    }
+    
+.searchform {
+    float: right;
+    margin-top: 20px;
+    border:F48A97 2px solid;
+    height:25px;
+    width:350px;
+    }
+.searchform input[type=text] {
+    width:285px;
+    height:25px;
+    border:0px;
+    background:#ffffff;
+    float:left;
+    margin:0px;padding:3px;
+    }
+.searchform input[type=submit]
+    {
+    border:F48A97 2px solid;
+    float:right;
+    margin:2px 2px 2px 2px;
+    height:22px;
+    padding-top:1px;
+    background:F48A97;
+    width: 60px;
+    }
+ a:link{text-decoration:none;}
+ 
+ .add{
+    background-color:FFFFFF;
+    width: 650px;
+    height: 200px;
+    position: fixed;  
+    left: 50%;
+    margin-left: -350px;  
+    top: 50%;  
+    margin-top: -100px;
+    border: 3px solid #000;
+    border-color: 797979;
+}
+select{
+height: 30px;
+width: 210px;
+}
